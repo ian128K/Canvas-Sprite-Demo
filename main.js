@@ -1,13 +1,13 @@
 // Wrap the whole thing in an anonymous closure.
 (function(){
 
-	// Initialize some array variables.
-	var mac, link, pocketwatch, spriteArray;
+	// Initialise the matrix variables.
+	var mac, link, pocketwatch, spriteMatrix;
 
 	// The default "mac" array is a 16 × 16 matrix. Each row contains 16 arrays with 3
 	// values each. (Red, green, and blue.) The alpha channel is either 0 or 255,
 	// and is assigned using an if{} in the main loop of the function below. This same
-	// pattern is used for the other two sprites.
+	// pattern is used for the other two sprites in this demo.
 	mac = [
 		[ [], [], [], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [], [], [] ],
 		[ [], [], [55, 56, 51], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [55, 56, 51], [], [] ],
@@ -22,7 +22,7 @@
 		[ [], [], [55, 56, 51], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [213, 215, 201], [196, 198, 183], [213, 215, 201], [222, 224, 211], [55, 56, 51], [], [] ],
 		[ [], [], [55, 56, 51], [222, 224, 211], [218, 44, 52], [222, 224, 211], [222, 224, 211], [222, 224, 211], [0, 0, 0], [0, 0, 0], [0, 0, 0], [147, 147, 147], [222, 224, 211], [55, 56, 51], [], [] ],
 		[ [], [], [55, 56, 51], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [222, 224, 211], [55, 56, 51], [], [] ],
-		[ [69, 70, 64], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [69, 70, 64], [], [] ],
+		[ [], [], [69, 70, 64], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [69, 70, 64], [], [] ],
 		[ [], [], [], [55, 56, 51], [154, 157, 143], [185, 188, 170], [229, 233, 218], [212, 215, 197], [203, 205, 189], [185, 188, 170], [154, 157, 143], [119, 119, 119], [55, 56, 51], [], [], [] ],
 		[ [], [], [], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [55, 56, 51], [], [], [] ]
 	];
@@ -61,58 +61,31 @@
 		[ [], [0, 0, 0], [248, 88, 88], [248, 248, 248], [248, 248, 248], [160, 160, 160], [248, 248, 248], [248, 248, 248], [160, 160, 160], [160, 160, 160], [152, 56, 56], [0, 0, 0], [] ],
 		[ [], [0, 0, 0], [152, 56, 56], [248, 88, 88], [248, 88, 88], [248, 248, 248], [248, 248, 248], [160, 160, 160], [248, 88, 88], [152, 56, 56], [152, 56, 56], [0, 0, 0], [] ],
 		[ [], [], [0, 0, 0], [0, 0, 0], [152, 56, 56], [152, 56, 56], [152, 56, 56], [152, 56, 56], [152, 56, 56], [0, 0, 0], [0, 0, 0], [], [] ],
-		[ [], [], [], [], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [], [], [], [] ]		
+		[ [], [], [], [], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [], [], [], [] ]
 	];
 
-	// Assign one of the three sprites to the sprite array, based on which one is
-	// clicked. Each sprite has different pixel dimensions, and the function changes
-	// the width and height properties of the canvas element both in the HTML and
-	// CSS. It defaults to "mac".
-	spriteArray = link;
-
-	function loadArray(sprite){
-		var canvas = document.querySelector("#spriteDisplay");
-		// change canvas element and CSS size to 16x16
-		if(sprite === "mac") {
-			canvas.width = 16;
-			canvas.height = 16;
-			canvas.style.width = "16px !important";
-			canvas.style.height = "16px !important";
-		}
-		// change canvas element and CSS size to 15x15
-		if(sprite === "link") {
-			canvas.width = 15;
-			canvas.height = 15;
-			canvas.style.width = "15px !important";
-			canvas.style.height = "15px !important";
-		}
-		// change canvas element and CSS size to 13x16
-		if(sprite === "pocketwatch") {
-			canvas.width = 13;
-			canvas.height = 16;
-			canvas.style.width = "13px !important";
-			canvas.style.height = "16px !important";
-		}
-		spriteArray = sprite;
+	// Pass a sprite name as an argument and assign it to spriteMatrix.
+	function loadMatrix(sprite){
+		spriteMatrix = sprite;
 	}
 
-	// Function to copy the array to the canvas with the given ID.
-	function copyArrayToCanvas(array, canvasId){
+	// Copy the array to the canvas with the given ID.
+	function copyMatrixToCanvas(matrix, canvasId){
 
 		// Initialize the function's variables.
 		var c, context, h, w, imgData, data, height, width;
 
 		c = document.querySelector(canvasId);
-		c.width = array.length;
-		c.height = array[0].length;  
+		c.width = matrix.length;
+		c.height = matrix[0].length;  
 		
 		context = c.getContext("2d");
 		h = context.canvas.height;
 		w = context.canvas.width;
 		imgData = context.getImageData(0, 0, w, h);
 		data = imgData.data;
-		height = array.length;
-		width = array[0].length;
+		height = matrix.length;
+		width = matrix[0].length;
 
 		// Loop through the array and assign the value to the pixel at (x, y).
 		for(var i = 0; i < height; i++) {
@@ -123,7 +96,7 @@
 				s = 4 * i * w + 4 * j;
 
 				// Take the current (x, y) position in the array and assign it to a variable.
-				x = array[i][j];
+				x = matrix[i][j];
 
 				// Grab the rgb values from the array based on the index.
 				data[s] = x[0];
@@ -147,21 +120,19 @@
 	// Listen for clicks on the img elements and swap sprites when it hears one.
 	// I really should DRY this out.
 	document.querySelector("#mac").addEventListener('click', function () {
-		loadArray(mac);
-		copyArrayToCanvas(spriteArray, "#spriteDisplay");
+		loadMatrix(mac);
+		copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
 	}, false);
 	document.querySelector("#link").addEventListener('click', function () {
-		loadArray(link);
-		copyArrayToCanvas(spriteArray, "#spriteDisplay");
+		loadMatrix(link);
+		copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
 	}, false);
 	document.querySelector("#pocketwatch").addEventListener('click', function () {
-		loadArray(pocketwatch);
-		copyArrayToCanvas(spriteArray, "#spriteDisplay");
+		loadMatrix(pocketwatch);
+		copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
 	}, false);
 
 	// Call our functions.
-	loadArray(link);
-	copyArrayToCanvas(spriteArray, "#spriteDisplay");
-
-//	return;
+	loadMatrix(mac);
+	copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
 })();
