@@ -65,12 +65,12 @@
 	];
 
 	// Pass a sprite name as an argument and assign it to spriteMatrix.
-	function loadMatrix(sprite){
+	function loadMatrix(sprite) {
 		spriteMatrix = sprite;
 	}
 
 	// Copy the array to the canvas with the given ID.
-	function copyMatrixToCanvas(matrix, canvasId){
+	function copyMatrixToCanvas(matrix, canvasId) {
 
 		// Initialize the function's variables.
 		var c, context, h, w, imgData, data, height, width;
@@ -119,15 +119,15 @@
 
 	// Listen for clicks on the img elements and swap sprites when it hears one.
 	// I really should DRY this out.
-	document.querySelector("#mac").addEventListener('click', function () {
+	document.getElementById("mac").addEventListener('click', function () {
 		loadMatrix(mac);
 		copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
 	}, false);
-	document.querySelector("#link").addEventListener('click', function () {
+	document.getElementById("link").addEventListener('click', function () {
 		loadMatrix(link);
 		copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
 	}, false);
-	document.querySelector("#pocketwatch").addEventListener('click', function () {
+	document.getElementById("pocketwatch").addEventListener('click', function () {
 		loadMatrix(pocketwatch);
 		copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
 	}, false);
