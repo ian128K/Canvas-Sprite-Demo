@@ -22,7 +22,9 @@
 				line-height: 1.4;
 				-webkit-text-size-adjust: 100%; /* § */
 			}
-			canvas {
+			div {
+				width: 16px;
+				height: 16px;
 				margin: 0 auto;
 				vertical-align: middle;
 				display: block;
@@ -44,11 +46,13 @@
 	</head>
 
 	<body>
-		<p>This page has a 15px × 15px &lt;canvas&gt; element located between these two paragraphs. The JavaScript (external, loaded at the end of the &lt;body&gt;) takes an array of color values and renders them pixel-by-pixel to the canvas.</p>
+		<p>This page has a &lt;canvas&gt; element within a 16px by 16px &lt;div&gt; located between these two paragraphs. The JavaScript (external, loaded at the end of the &lt;body&gt;) takes an array of color values and renders them pixel-by-pixel to the canvas.</p>
 
-		<canvas id="spriteDisplay" width="15" height="15"></canvas>
+		<div>
+			<canvas id="spriteDisplay"></canvas>
+		</div>
 
-		<p>Select a sprite below to load into the canvas. The images used for these links are just plain PNG files, but the sprites loaded into the canvas are all arrays of rgb values.</p>
+		<p>Select a sprite below to load into the canvas. The images used for these links are just plain PNG files, but the sprites loaded into the canvas are all arrays of RGB values. Each sprite has different pixel dimensions, and the script resizes the canvas element to match the sprite loaded.</p>
 		
 		<ul>
 			<li><img id="mac" src="img/mac.png" alt="" /></li>
