@@ -76,16 +76,16 @@
 		var c, context, h, w, imgData, data, height, width;
 
 		c = document.querySelector(canvasId);
-		c.width = matrix.length;
-		c.height = matrix[0].length;  
+		c.width = matrix[0].length;
+		c.height = matrix.length;  
 		
 		context = c.getContext("2d");
 		h = context.canvas.height;
 		w = context.canvas.width;
 		imgData = context.getImageData(0, 0, w, h);
 		data = imgData.data;
-		height = matrix.length;
 		width = matrix[0].length;
+		height = matrix.length;
 
 		// Loop through the array and assign the value to the pixel at (x, y).
 		for(var i = 0; i < height; i++) {
