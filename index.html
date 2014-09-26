@@ -18,27 +18,47 @@
 			html {
 				color: #222;
 				font-family: Monaco, Consolas, "Andale Mono", monospace;
-				font-size: 1em;
+				font-size: 12px;
 				line-height: 1.4;
 				-webkit-text-size-adjust: 100%; /* § */
 			}
-			canvas {
-				width: 15px;
-				height: 15px;
+			div {
+				width: 16px;
+				height: 16px;
 				margin: 0 auto;
 				vertical-align: middle;
 				display: block;
 			}
 			p {
-				margin: 5em auto;
-				padding: 0 14em;
+				margin: 8em auto;
+				padding: 0 22em;
+			}
+			ul {
+				max-width: 384px;
+				margin: -52px auto 0;
+			}
+			ul li {
+				list-style: none;
+				display: inline-block;
+				padding: 0 24px;
 			}
 		</style>
 	</head>
 
 	<body>
-		<p>This page has a 15px × 15px &lt;canvas&gt; element. The JavaScript (external, loaded at the end of the &lt;body&gt;) takes an array of color values and renders them pixel-by-pixel to the canvas.</p>
-		<canvas id="sprite" width="15" height="15"></canvas>
+		<p>This page has a &lt;canvas&gt; element within a 16px by 16px &lt;div&gt; located between these two paragraphs. The JavaScript (external, loaded at the end of the &lt;body&gt;) takes an array of color values and renders them pixel-by-pixel to the canvas.</p>
+
+		<div>
+			<canvas id="spriteDisplay"></canvas>
+		</div>
+
+		<p>Select a sprite below to load into the canvas. The images used for these links are just plain PNG files, but the sprites loaded into the canvas are all arrays of RGB values. Each sprite has different pixel dimensions, and the script resizes the canvas element to match the sprite loaded.</p>
+		
+		<ul>
+			<li><img id="mac" src="img/mac.png" alt="" /></li>
+			<li><img id="link" src="img/link.png" alt="" /></li>
+			<li><img id="pocketwatch" src="img/pocketwatch.png" alt="" /></li>
+		</ul>
 
 		<!-- External JavaScript load deferred until after the page loads. -->
 		<script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="main.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script>
