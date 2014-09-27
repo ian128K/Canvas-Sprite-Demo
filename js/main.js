@@ -103,10 +103,10 @@
 				data[s + 1] = x[1];
 				data[s + 2] = x[2];
 
-				// If array value at current index is blank, make it transparent…
+				// If array value at current index is empty or 0, make it transparent...
 				if(data[s] == "" && data[s+1] == "" && data[s+2] == "") {
 					data[s + 3] = 0;
-				// … otherwise, make it opaque.
+				// ...otherwise, make it opaque.
 				} else {
 					data[s + 3] = 255;
 				}

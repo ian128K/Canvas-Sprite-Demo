@@ -1,0 +1,38 @@
+{
+  "name": "Canvas Sprite Demo",
+  "version": "1.1.0",
+  "homepage": "https://github.com/ian128K/Canvas-Sprite-Demo",
+  "description": "A demonstration of taking an array of rgb color values and rendering them pixel-by-pixel to a canvas element.",
+  "author": {
+    "name": "Ian Adams",
+    "email": "ian@128K.co",
+    "url": "http://128K.co/folio/"
+  },
+  "keywords": [
+  	 "canvas",
+    "grunt",
+    "karma",
+    "jasmine"
+  ],
+  "license": {
+    "type": "ISC",
+    "url": "https://raw.github.com/ian128K/Canvas-Sprite-Demo/master/LICENSE.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ian128K/Canvas-Sprite-Demo.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.8.0",
+    "grunt-notify": "^0.3.0",
+    "karma": "^0.12.17",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-jasmine": "^0.1.5",
+    "karma-safari-launcher": "^0.1.1",
+  }
+}
