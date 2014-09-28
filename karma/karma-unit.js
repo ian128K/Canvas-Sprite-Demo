@@ -13,7 +13,7 @@ module.exports = function ( karma ) {
     ],
     exclude: [],
     frameworks: [ 'jasmine' ],
-    plugins: [ 'karma-jasmine', 'karma-chrome-launcher', 'karma-firefox-launcher', 'karma-safari-launcher' ],
+    plugins: [ 'karma-jasmine', 'karma-chrome-launcher', 'karma-firefox-launcher', 'karma-safari-launcher', 'karma-story-reporter' ],
     preprocessors: {},
 
     /*

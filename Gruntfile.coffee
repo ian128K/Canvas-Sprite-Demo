@@ -1,8 +1,6 @@
 module.exports = ->
 
 	# Load Grunt modules.
-	@loadNpmTasks "grunt-contrib-clean"
-	@loadNpmTasks "grunt-contrib-copy"
 	@loadNpmTasks "grunt-contrib-jshint"
 	@loadNpmTasks "grunt-contrib-watch"
 	@loadNpmTasks "grunt-karma"
@@ -13,7 +11,19 @@ module.exports = ->
 
 	# Configure Grunt tasks.
 	taskConfig =
-  
+		# Change options for default messages in grunt-notify.
+		notify_hooks:
+			options:
+				enabled: true
+				max_jshint_notifications: 1
+
+		# Configure system-level notifications for Grunt tasks.
+		notify:
+			watch:
+				options:
+					title: "Unit tests complete"
+					message: "Karma has finished running unit tests on main.js. Results are viewable in Terminal."
+
 		###
 		The JavaScript source and unit tests are linted based on the policies listed in
 		`options`. No globals are defined.
