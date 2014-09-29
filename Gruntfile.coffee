@@ -7,7 +7,7 @@ module.exports = ->
 	@loadNpmTasks "grunt-notify"
 
 	# Load configuration file.
-	userConfig = require("./config.js")
+	userConfig = require("./config.coffee")
 
 	# Configure Grunt tasks.
 	taskConfig =
@@ -90,7 +90,6 @@ module.exports = ->
 				]
 				options:
 					livereload: false
-
 
 	# Run Grunt tasks.
 	@initConfig @util._.extend(taskConfig, userConfig)

@@ -9,10 +9,10 @@ module.exports = function ( karma ) {
      * The list of file patterns to load into the browser during testing.
      */
     files: [      
-      'main.js',
+      'js/main.js',
     ],
     exclude: [],
-    frameworks: [ 'jasmine' ],
+    frameworks: [ "jasmine" ],
     plugins: [ 'karma-jasmine', 'karma-chrome-launcher', 'karma-firefox-launcher', 'karma-safari-launcher', 'karma-story-reporter' ],
     preprocessors: {},
 

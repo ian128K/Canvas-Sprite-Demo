@@ -1,5 +1,5 @@
 {
-  "name": "Canvas Sprite Demo",
+  "name": "Canvas-Sprite-Demo",
   "version": "1.1.0",
   "homepage": "https://github.com/ian128K/Canvas-Sprite-Demo",
   "description": "A demonstration of taking an array of rgb color values and rendering them pixel-by-pixel to a canvas element.",
