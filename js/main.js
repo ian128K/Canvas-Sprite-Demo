@@ -1,6 +1,3 @@
-/* global document */
-// ^^ Indicate to JSHint that 'document' has been defined elsewhere. (In this case, the browser.)
-
 // Initialise the matrix variables.
 var mac, link, pocketwatch, spriteMatrix;
 

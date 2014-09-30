@@ -41,6 +41,7 @@ module.exports = ->
 				sub: true
 				boss: true
 				eqnull: true
+				browser: true
 	
 			globals: {}
 	        
