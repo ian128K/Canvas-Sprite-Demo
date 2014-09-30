@@ -88,7 +88,7 @@ function copyMatrixToCanvas(matrix, canvasId) {
 	width = matrix[0].length;
 	height = matrix.length;
 
-	// Loop through the array and assign the value to the pixel at (x, y).
+	// Loop through the array and assign the RGB value to the pixel at (x, y).
 	for(var i = 0; i < height; i++) {
 		for(var j = 0; j < width; j++) {
 			var s, x;

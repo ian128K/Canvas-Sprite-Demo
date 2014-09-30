@@ -48,7 +48,7 @@ module.exports = ->
 		# Configure Karma.
 		karma:
 			options:
-				configFile: "./karma/karma-unit.js"
+				configFile: "./karma/karma.conf.js"
 	
 			unit:
 				port: 9019
@@ -56,6 +56,12 @@ module.exports = ->
 	
 			continuous:
 				singleRun: true
+
+			browsers: [
+				'Chrome'
+				'Firefox'
+				'Safari'
+			]
 
 		###
 		For rapid development, set up a watch that checks to see if any of the files
