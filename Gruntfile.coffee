@@ -55,7 +55,7 @@ module.exports = ->
 	
 			continuous:
 				singleRun: true
-	
+
 		###
 		For rapid development, set up a watch that checks to see if any of the files
 		listed below change, and then executes the listed tasks when they do.
@@ -75,7 +75,7 @@ module.exports = ->
 				files: ["<%= app_files.js %>"]
 				tasks: [
 					"jshint:src"
-					"karma:unit:run"
+					"karma:unit"
 				]
 	
 			###
@@ -86,7 +86,7 @@ module.exports = ->
 				files: ["<%= app_files.jsunit %>"]
 				tasks: [
 					"jshint:test"
-					"karma:unit:run"
+					"karma:unit"
 				]
 				options:
 					livereload: false
@@ -96,3 +96,4 @@ module.exports = ->
 
 	# Register Grunt tasks.
 	@registerTask "default", ["watch"]
+	@registerTask "test", ["jshint:src", "karma:unit"]

@@ -1,3 +1,6 @@
+/* global document */
+// ^^ Indicate to JSHint that 'document' has been defined elsewhere. (In this case, the browser.)
+
 // Initialise the matrix variables.
 var mac, link, pocketwatch, spriteMatrix;
 
@@ -107,8 +110,7 @@ function copyMatrixToCanvas(matrix, canvasId) {
 			// If array value at current index is undefined OR outside of the number
 			// range 0–255, make that pixel transparent...
 			if(
-				(typeof x[0] === "undefined" && typeof x[1] === "undefined" && typeof x[2] === "undefined")
-				||
+				(typeof x[0] === "undefined" && typeof x[1] === "undefined" && typeof x[2] === "undefined") ||
 				((data[s] < 0 || data[s] > 255) || (data[s + 1] < 0 || data[s + 1] > 255) || (data[s + 2] < 0 || data[s + 2] > 255))
 				) {
 				data[s + 3] = 0;

@@ -26,7 +26,6 @@ module.exports = function ( karma ) {
      * operates on, and the URL path for the browser to use.
      */
     port: 9018,
-    runnerPort: 9100,
     urlRoot: '/',
 
     /* 
