@@ -9,9 +9,7 @@ module.exports = function ( karma ) {
 		 * The list of file patterns to load into the browser during testing.
 		 */
 		files: [
-			JASMINE,
-			JASMINE_ADAPTER,
-			'js/main.js'
+			'js/*.js'
 		],
 		exclude: [],
 		frameworks: [ "jasmine" ],
