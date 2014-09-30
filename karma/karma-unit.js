@@ -11,7 +11,7 @@ module.exports = function ( karma ) {
 		files: [
 			JASMINE,
 			JASMINE_ADAPTER,
-			'js/main.js',
+			'js/main.js'
 		],
 		exclude: [],
 		frameworks: [ "jasmine" ],
