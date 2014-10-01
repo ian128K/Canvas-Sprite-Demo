@@ -7,8 +7,8 @@ module.exports =
   contains our app's unit tests.
   ###
   app_files:
-    js: ["./js/main.js"]
-    jsunit: ["./js/main.spec.js"]
+    js: ["./js/spriteloader.js"]
+    jsunit: ["./js/spriteloader.spec.js"]
     coffee: ["./*.coffee"]
     html: ["./index.html"]
   

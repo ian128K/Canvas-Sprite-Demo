@@ -4,7 +4,7 @@ var mac, link, pocketwatch, spriteMatrix;
 // Each row contains an arbitrary but equal number of arrays with 3 (or 4)
 // values each. (Red, green, and blue, with optional alpha.) If the alpha
 // channel is missing, it's assigned as either 0 or 255 using an if{} in
-// the main for loop of the copyMatrixToCanvas function. If it's present, it's
+// the main for loop of the renderToCanvas function. If it's present, it's
 // passed through in that same loop. The number of rows is also arbitrary, but
 // for the purposes of this demo, no matrix is larger than 16 × 16.
 
@@ -71,16 +71,16 @@ function loadMatrix(sprite) {
 }
 
 // Copy the array to the canvas with the given ID.
-function copyMatrixToCanvas(matrix, canvasId) {
+function renderToCanvas(matrix, canvasId) {
 
 	// Initialize the function's variables.
-	var c, context, w, h, imgData, data, width, height;
+	var canvasElement, context, w, h, imgData, data, width, height;
 
-	c = document.querySelector(canvasId);
-	c.width = matrix[0].length;
-	c.height = matrix.length;  
+	canvasElement = document.querySelector(canvasId);
+	canvasElement.width = matrix[0].length;
+	canvasElement.height = matrix.length;  
 	
-	context = c.getContext("2d");
+	context = canvasElement.getContext("2d");
 	w = context.canvas.width;
 	h = context.canvas.height;
 	imgData = context.getImageData(0, 0, w, h);
@@ -89,35 +89,35 @@ function copyMatrixToCanvas(matrix, canvasId) {
 	height = matrix.length;
 
 	// Loop through the array and assign the RGB value to the pixel at (x, y).
-	for(var i = 0; i < height; i++) {
-		for(var j = 0; j < width; j++) {
-			var s, x;
+	for(var y = 0; y < height; y++) {
+		for(var x = 0; x < width; x++) {
+			var outputIndex, inputPixel;
 
 			// Calculate the index of imgData.data, since canvas pixels are made up of 4
 			// values (RGBa).
-			s = 4 * i * w + 4 * j;
+			outputIndex = 4 * y * w + 4 * x;
 
 			// Take the current (x, y) position in the array and assign it to a variable.
-			x = matrix[i][j];
+			inputPixel = matrix[y][x];
 
 			// Grab the rgb values from the array based on the index.
-			data[s] = x[0];
-			data[s + 1] = x[1];
-			data[s + 2] = x[2];
+			data[outputIndex] = inputPixel[0];
+			data[outputIndex + 1] = inputPixel[1];
+			data[outputIndex + 2] = inputPixel[2];
 
 			// If array value at current index is undefined OR outside of the number
 			// range 0–255, make that pixel transparent...
 			if(
-				(typeof x[0] === "undefined" && typeof x[1] === "undefined" && typeof x[2] === "undefined") ||
-				((data[s] < 0 || data[s] > 255) || (data[s + 1] < 0 || data[s + 1] > 255) || (data[s + 2] < 0 || data[s + 2] > 255))
+				(typeof inputPixel[0] === "undefined" && typeof inputPixel[1] === "undefined" && typeof inputPixel[2] === "undefined") ||
+				((data[outputIndex] < 0 || data[outputIndex] > 255) || (data[outputIndex + 1] < 0 || data[outputIndex + 1] > 255) || (data[outputIndex + 2] < 0 || data[outputIndex + 2] > 255))
 				) {
-				data[s + 3] = 0;
+				data[outputIndex + 3] = 0;
 			// ...but if an alpha channel is already defined, pass it through...
-			} else if(typeof x[3] !== "undefined") {
-				data[s + 3] = x[3];
+			} else if(typeof inputPixel[3] !== "undefined") {
+				data[outputIndex + 3] = inputPixel[3];
 			// ...otherwise, make make that pixel opaque.
 			} else {
-				data[s + 3] = 255;
+				data[outputIndex + 3] = 255;
 			}
 		}
 	}
@@ -126,22 +126,21 @@ function copyMatrixToCanvas(matrix, canvasId) {
 	context.putImageData(imgData, 0, 0);	
 }
 
-// Listen for clicks on the img elements and swap sprites when it hears one.
+// Listen for clicks on the <img> elements and swap sprites when it hears one.
 // I really should DRY this out.
-macID = 
 document.getElementById('mac').addEventListener('click', function () {
 	loadMatrix(mac);
-	copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
+	renderToCanvas(spriteMatrix, "#spriteDisplay");
 }, false);
 document.getElementById('link').addEventListener('click', function () {
 	loadMatrix(link);
-	copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
+	renderToCanvas(spriteMatrix, "#spriteDisplay");
 }, false);
 document.getElementById('pocketwatch').addEventListener('click', function () {
 	loadMatrix(pocketwatch);
-	copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
+	renderToCanvas(spriteMatrix, "#spriteDisplay");
 }, false);
 
 // Call our functions.
 loadMatrix(mac);
-copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
+renderToCanvas(spriteMatrix, "#spriteDisplay");
