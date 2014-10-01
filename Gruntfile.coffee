@@ -42,6 +42,21 @@ module.exports = ->
 				boss: true
 				eqnull: true
 				browser: true
+				predef: [
+					"jasmine"
+					"describe"
+					"xdescribe"
+					"before"
+					"beforeEach"
+					"after"
+					"afterEach"
+					"it"
+					"xit"
+					"it"
+					"inject"
+					"expect"
+					"spyOn"
+				]
 	
 			globals: {}
 	        
@@ -52,10 +67,7 @@ module.exports = ->
 	
 			unit:
 				port: 9019
-				background: true
-	
-			continuous:
-				singleRun: true
+				background: false
 
 			browsers: [
 				'Chrome'
