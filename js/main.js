@@ -93,7 +93,8 @@ function copyMatrixToCanvas(matrix, canvasId) {
 		for(var j = 0; j < width; j++) {
 			var s, x;
 
-			// Calculate the index, since canvas pixels are made up of 4 values (rgba).
+			// Calculate the index of imgData.data, since canvas pixels are made up of 4
+			// values (RGBa).
 			s = 4 * i * w + 4 * j;
 
 			// Take the current (x, y) position in the array and assign it to a variable.
@@ -121,21 +122,22 @@ function copyMatrixToCanvas(matrix, canvasId) {
 		}
 	}
 
-	// Take the imageData and render it to the canvas.
+	// Take the imgData object and render it to the canvas.
 	context.putImageData(imgData, 0, 0);	
 }
 
 // Listen for clicks on the img elements and swap sprites when it hears one.
 // I really should DRY this out.
-document.getElementById("mac").addEventListener('click', function () {
+macID = 
+document.getElementById('mac').addEventListener('click', function () {
 	loadMatrix(mac);
 	copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
 }, false);
-document.getElementById("link").addEventListener('click', function () {
+document.getElementById('link').addEventListener('click', function () {
 	loadMatrix(link);
 	copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
 }, false);
-document.getElementById("pocketwatch").addEventListener('click', function () {
+document.getElementById('pocketwatch').addEventListener('click', function () {
 	loadMatrix(pocketwatch);
 	copyMatrixToCanvas(spriteMatrix, "#spriteDisplay");
 }, false);
