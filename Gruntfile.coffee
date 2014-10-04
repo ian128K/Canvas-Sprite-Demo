@@ -7,7 +7,7 @@ module.exports = ->
 	@loadNpmTasks "grunt-notify"
 
 	# Load configuration file.
-	userConfig = require("./config.coffee")
+	userConfig = require("./grunt.config.coffee")
 
 	# Configure Grunt tasks.
 	taskConfig =

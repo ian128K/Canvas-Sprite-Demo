@@ -9,9 +9,9 @@ module.exports =
   app_files:
     js: ["./js/spriteloader.js"]
     jsunit: ["./js/spriteloader.spec.js"]
-    coffee: ["./*.coffee"]
     html: ["./index.html"]
   
   # This is the mock file used during testing only.
   test_files:
     js: ["./js/mocks.js"]
+    html: ["./karma/imagelist.fix.html"]
