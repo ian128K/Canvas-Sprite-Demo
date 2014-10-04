@@ -126,19 +126,14 @@ function renderToCanvas(matrix, canvasId) {
 	context.putImageData(imgData, 0, 0);	
 }
 
-// Listen for clicks on the <img> elements and swap sprites when it hears one.
-// I really should DRY this out.
-document.getElementById('mac').addEventListener('click', function () {
-	loadMatrix(mac);
-	renderToCanvas(spriteMatrix, "#spriteDisplay");
-}, false);
-document.getElementById('link').addEventListener('click', function () {
-	loadMatrix(link);
-	renderToCanvas(spriteMatrix, "#spriteDisplay");
-}, false);
-document.getElementById('pocketwatch').addEventListener('click', function () {
-	loadMatrix(pocketwatch);
-	renderToCanvas(spriteMatrix, "#spriteDisplay");
+// Listen for clicks on the <img> elements, using the <ul> as the event delegate,
+// and swap sprites when it hears one.
+document.querySelector('ul').addEventListener('click', function(e) {
+	if(e.target.nodeName === "IMG") {
+		var sprite = eval(e.target.id);
+		loadMatrix(sprite);
+		renderToCanvas(spriteMatrix, "#spriteDisplay");
+	}
 }, false);
 
 // Call our functions.
