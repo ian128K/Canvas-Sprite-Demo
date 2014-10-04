@@ -5,12 +5,12 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '..',
+    basePath: '../',
 
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine-jquery', 'jasmine'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
@@ -21,11 +21,11 @@ module.exports = function(config) {
       	watched: true,
       	served: true,
       	included: true
-      }
+      },
 
       // Fixtures
       {
-	      pattern: 'karma/*.html',
+	      pattern: 'karma/*.fix.html',
 	      watched: true,
 	      served: true,
 	      included: false
@@ -37,12 +37,21 @@ module.exports = function(config) {
     exclude: [
     ],
 
+    // karma plugins
+    plugins: [
+    	'karma-chrome-launcher',
+    	'karma-firefox-launcher',
+    	'karma-html2js-preprocessor',
+    	'karma-jasmine',
+    	'karma-safari-launcher',
+    	'karma-story-reporter'
+    ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+    	'**/*.html': ['html2js']
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

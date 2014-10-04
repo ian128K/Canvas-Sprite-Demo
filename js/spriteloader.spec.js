@@ -1,6 +1,9 @@
-/// <reference path="spriteloader.js">
-
 describe("Sprite loader’s", function() {
+
+	beforeEach(function() {
+		var imagelist = __html__['../karma/imagelist.fix.html'];
+		document.body.appendChild(imagelist);
+	});
 
 	describe("load matrix function", function() {
 
