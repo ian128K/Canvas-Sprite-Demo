@@ -122,12 +122,14 @@ function renderToCanvas(matrix, canvasId) {
 		}
 	}
 
-	// Take the imgData object and render it to the canvas.
+	// Take the imgData object and render it to the canvas, starting at the
+	// pixel in the top-left corner of the element.
 	context.putImageData(imgData, 0, 0);	
 }
 
-// Listen for clicks on the <img> elements, using the <ul> as the event delegate,
-// and swap sprites when it hears one.
+// Listen for clicks on the <img> elements using the <ul> as the event delegate,
+// and swap sprites when it hears one, using the id of the <img> for the name of
+// the matrix.
 document.querySelector('ul').addEventListener('click', function(e) {
 	if(e.target.nodeName === "IMG") {
 		var sprite = eval(e.target.id);
